@@ -1,0 +1,19 @@
+[user]
+	name = David Thompson
+	email = mail@fatbusinessman.com
+[alias]
+	st = status -sb
+	b = branch
+	d = diff
+    glog = log --graph
+
+[core]
+	excludesfile = ~/.gitignore
+	quotepath = false
+
+[color]
+	ui = true
+
+[push]
+	default = upstream
+
