@@ -1,19 +1,20 @@
 [user]
-	name = David Thompson
-	email = mail@fatbusinessman.com
+    name = David Thompson
+    email = mail@fatbusinessman.com
+
 [alias]
-	st = status -sb
-	b = branch
-	d = diff
+    st = status -sb
+    b = branch
+    d = diff
     glog = log --graph
 
 [core]
-	excludesfile = ~/.gitignore
-	quotepath = false
+    excludesfile = ~/.gitignore
+    quotepath = false
 
 [color]
-	ui = true
+    ui = true
 
 [push]
-	default = upstream
+    default = upstream
 
