@@ -11,10 +11,11 @@ set expandtab
 
 map <F2> :NERDTreeToggle<CR>
 
-highlight ExtraWhitespace ctermbg=red guibg=DarkRed
-match ExtraWhitespace /\s\+$/
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
+autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
+autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#FFCCCC
-match OverLength /\%81v.\+/
+autocmd ColorScheme * highlight OverLength ctermbg=red ctermfg=white guibg=#FFCCCC
+autocmd FileType * highlight OverLength ctermbg=red ctermfg=white guibg=#FFCCCC
+autocmd Syntax * syn match OverLength /\%81v.\+/ containedin=ALL
 
