@@ -10,6 +10,7 @@ set shiftwidth=4
 set expandtab
 
 map <F2> :NERDTreeToggle<CR>
+imap <F3> #
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
