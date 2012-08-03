@@ -4,6 +4,7 @@ filetype on
 filetype plugin indent on
 
 set hlsearch
+syntax on
 
 set tabstop=4
 set shiftwidth=4
