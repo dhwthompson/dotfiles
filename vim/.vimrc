@@ -17,7 +17,5 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
-autocmd ColorScheme * highlight OverLength ctermbg=red ctermfg=white guibg=#FFCCCC
-autocmd FileType * highlight OverLength ctermbg=red ctermfg=white guibg=#FFCCCC
-autocmd Syntax * syn match OverLength /\%81v.\+/ containedin=ALL
-
+set colorcolumn=+1
+autocmd FileType * highlight ColorColumn guibg=#FFFFDD
