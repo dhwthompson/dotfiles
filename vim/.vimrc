@@ -3,6 +3,8 @@ call pathogen#infect()
 filetype on
 filetype plugin indent on
 
+set hidden
+
 set hlsearch
 syntax on
 
