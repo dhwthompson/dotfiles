@@ -16,3 +16,6 @@
 [submodule "vim/.vim/bundle/ack"]
 	path = vim/.vim/bundle/ack
 	url = git@github.com:mileszs/ack.vim.git
+[submodule "vim/.vim/bundle/command-t"]
+	path = vim/.vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
