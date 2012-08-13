@@ -23,4 +23,4 @@ autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
 set colorcolumn=+1
-autocmd FileType * highlight ColorColumn guibg=#FFFFDD
+autocmd BufEnter * highlight ColorColumn guibg=#FFDDDD
