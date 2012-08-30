@@ -20,6 +20,7 @@ let g:CommandTMaxHeight = 10
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
+autocmd BufEnter * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
 set colorcolumn=+1
