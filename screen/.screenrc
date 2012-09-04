@@ -1,0 +1,2 @@
+hardstatus alwayslastline "%-w%{+ b}[%n %t]%{-}%+w"
+
