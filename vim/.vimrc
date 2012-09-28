@@ -16,6 +16,7 @@ map <F2> :NERDTreeToggle<CR>
 imap <F3> #
 
 let mapleader = ","
+map <Leader>f :CommandTFlush<CR>
 let g:CommandTMaxHeight = 10
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
