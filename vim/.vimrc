@@ -5,7 +5,7 @@ filetype plugin indent on
 
 set hidden
 
-set hlsearch
+set nohlsearch
 syntax on
 
 set tabstop=4
