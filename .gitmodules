@@ -19,3 +19,6 @@
 [submodule "vim/.vim/bundle/command-t"]
 	path = vim/.vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "vim/.vim/bundle/nerdcommenter"]
+	path = vim/.vim/bundle/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
