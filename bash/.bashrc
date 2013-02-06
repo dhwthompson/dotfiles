@@ -23,7 +23,6 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias gf='git fetch'
 alias upin='vagrant up && vagrant ssh'
-alias gdssh='ssh -F ~/Projects/GDS/govuk/alphagov-deployment/ssh_config'
 alias v='mvim .'
 
 function se {
