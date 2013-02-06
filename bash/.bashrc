@@ -33,10 +33,6 @@ function se {
   fi
 }
 
-function g {
-  cd ~/Projects/GDS/govuk/$1*
-}
-
 function st { if [[ -e '.svn' ]]; then svn status; else git st; fi }
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
