@@ -19,6 +19,8 @@ let mapleader = ","
 map <Leader>f :CommandTFlush<CR>
 let g:CommandTMaxHeight = 10
 
+map <Leader>a :Ack! 
+
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd BufEnter * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
