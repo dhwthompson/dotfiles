@@ -6,7 +6,7 @@
     st = status -sb
     b = branch
     d = diff
-    glog = log --graph
+    glog = log --graph --oneline
 
 [core]
     excludesfile = ~/.gitignore
