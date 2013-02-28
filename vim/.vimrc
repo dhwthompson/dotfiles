@@ -14,6 +14,7 @@ set expandtab
 
 map <F2> :NERDTreeToggle<CR>
 imap <F3> #
+imap § #
 
 let mapleader = ","
 map <Leader>f :CommandTFlush<CR>
