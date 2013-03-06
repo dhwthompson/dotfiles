@@ -24,6 +24,7 @@ alias gds='git diff --staged'
 alias gf='git fetch'
 alias upin='vagrant up && vagrant ssh'
 alias v='mvim .'
+alias st='git st'
 
 function se {
   if [[ -e 'bin/activate' ]]; then source bin/activate;
@@ -31,8 +32,6 @@ function se {
     ls -d *_ve >/dev/null 2>&1 && source *_ve/bin/activate || echo 'Not found';
   fi
 }
-
-function st { if [[ -e '.svn' ]]; then svn status; else git st; fi }
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
