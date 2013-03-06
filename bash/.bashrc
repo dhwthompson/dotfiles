@@ -33,6 +33,10 @@ function se {
   fi
 }
 
+function t {
+  screen -X title $(basename `pwd`)
+}
+
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
