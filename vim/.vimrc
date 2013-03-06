@@ -21,6 +21,7 @@ map <Leader>f :CommandTFlush<CR>
 let g:CommandTMaxHeight = 10
 
 map <Leader>a :Ack! 
+map <Leader>n :set number!<CR>
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
