@@ -30,8 +30,3 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
 set colorcolumn=+1
 autocmd BufEnter * highlight ColorColumn guibg=#FFDDDD
-
-" Ditch the toolbar
-if has("gui_running")
-  set guioptions=egmrt
-endif
