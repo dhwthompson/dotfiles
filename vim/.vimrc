@@ -12,6 +12,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set splitbelow
+set splitright
+
 map <F2> :NERDTreeToggle<CR>
 imap <F3> #
 imap § #
