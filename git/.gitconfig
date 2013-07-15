@@ -9,6 +9,7 @@
     glog = log --graph --oneline
     co = checkout
     com = checkout master
+    fp = fetch --prune
 
 [core]
     excludesfile = ~/.gitignore
