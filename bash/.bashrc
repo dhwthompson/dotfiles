@@ -27,6 +27,7 @@ alias gp='git pull --rebase'
 alias upin='vagrant up && vagrant ssh'
 alias v='mvim .'
 alias st='git st'
+alias json='python -m json.tool'
 
 function se {
   if [[ -e 'bin/activate' ]]; then source bin/activate;
