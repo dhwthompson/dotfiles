@@ -7,6 +7,7 @@
     b = branch
     d = diff
     glog = log --graph --oneline
+    one = log --oneline
     co = checkout
     com = checkout master
     fp = fetch --prune
