@@ -11,6 +11,8 @@
     co = checkout
     com = checkout master
     fp = fetch --prune
+    ff = merge --ff-only
+    m = merge --no-ff
 
 [core]
     excludesfile = ~/.gitignore
