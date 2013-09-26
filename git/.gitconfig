@@ -13,6 +13,7 @@
     fp = fetch --prune
     ff = merge --ff-only
     m = merge --no-ff
+    pff = pull --ff-only
 
 [core]
     excludesfile = ~/.gitignore
