@@ -27,6 +27,8 @@ map <Leader>a :Ack!
 map <Leader>A :Ack! --all 
 map <Leader>n :set number!<CR>
 
+let NERDTreeIgnore=['\.pyc$']
+
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd BufEnter * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
