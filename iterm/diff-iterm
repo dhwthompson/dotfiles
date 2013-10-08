@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+git show HEAD:iterm/com.googlecode.iterm2.plist | plutil -convert xml1 -o .iterm.orig.plist -
+plutil -convert xml1 -o .iterm.current.plist com.googlecode.iterm2.plist
+
+diff -u .iterm.orig.plist .iterm.current.plist
