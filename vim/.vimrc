@@ -22,6 +22,7 @@ imap § #
 let mapleader = ","
 let g:CommandTMaxHeight = 10
 
+map <Leader>t :CtrlP<CR>
 map <Leader>a :Ack! 
 map <Leader>A :Ack! --all 
 map <Leader>n :set number!<CR>
