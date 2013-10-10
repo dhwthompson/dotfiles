@@ -20,9 +20,9 @@ imap <F3> #
 imap § #
 
 let mapleader = ","
-map <Leader>f :CommandTFlush<CR>
 let g:CommandTMaxHeight = 10
 
+map <Leader>t :CtrlP<CR>
 map <Leader>a :Ack! 
 map <Leader>A :Ack! --all 
 map <Leader>n :set number!<CR>
