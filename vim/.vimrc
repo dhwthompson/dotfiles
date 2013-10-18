@@ -28,6 +28,7 @@ map <Leader>A :Ack! --all
 map <Leader>n :set number!<CR>
 
 let NERDTreeIgnore=['\.pyc$']
+set wildignore+=*/tmp/*
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
