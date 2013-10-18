@@ -30,6 +30,11 @@ alias v='mvim .'
 alias st='git st'
 alias json='python -m json.tool'
 
+# Bundler aliases
+alias be='bundle exec'
+alias ber='bundle exec rake'
+alias bet='bundle exec ruby -Itest'
+
 function se {
   if [[ -e 'bin/activate' ]]; then source bin/activate;
   else
