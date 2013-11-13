@@ -26,6 +26,11 @@ map <Leader>t :CtrlP<CR>
 map <Leader>a :Ack! 
 map <Leader>A :Ack! --all 
 map <Leader>n :set number!<CR>
+map <Leader>g :GitGutterToggle<CR>
+
+set updatetime=750
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_enabled = 0
 
 let NERDTreeIgnore=['\.pyc$']
 set wildignore+=*/tmp/*
