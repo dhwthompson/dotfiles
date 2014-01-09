@@ -26,6 +26,7 @@ alias gp='git pull'
 alias gp='git pull --rebase'
 alias gt='cd "$(git rev-parse --show-toplevel)"'
 alias gx='gitx'
+
 alias upin='vagrant up && vagrant ssh'
 alias v='mvim .'
 alias st='git st'
@@ -45,6 +46,11 @@ function se {
 
 function t {
   screen -X title $(basename `pwd`)
+}
+
+function gpop {
+  local oldbranch=$(git rev-parse --abbrev-ref HEAD)
+  git checkout master && git branch -d $oldbranch
 }
 
 if command -v brew >/dev/null 2>&1; then
