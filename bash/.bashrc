@@ -45,7 +45,7 @@ function se {
 }
 
 function t {
-  screen -X title $(basename `pwd`)
+screen -X title $(basename `pwd`) >/dev/null || printf "\033k$(basename `pwd`)\033\\"
 }
 
 function gpop {
