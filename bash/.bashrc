@@ -37,6 +37,8 @@ alias be='bundle exec'
 alias ber='bundle exec rake'
 alias bet='bundle exec ruby -Itest'
 
+which ack >/dev/null || which ack-grep >/dev/null && alias ack=ack-grep
+
 function se {
   if [[ -e 'bin/activate' ]]; then source bin/activate;
   else
