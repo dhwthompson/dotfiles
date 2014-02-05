@@ -34,6 +34,7 @@ let g:gitgutter_enabled = 0
 
 let NERDTreeIgnore=['\.pyc$']
 set wildignore+=*/tmp/*
+set wildignore+=*/_site/*
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd FileType * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
