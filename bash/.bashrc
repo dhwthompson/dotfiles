@@ -5,7 +5,6 @@ function add_path {
 }
 
 add_path /usr/local/bin
-add_path /Users/david/.gem/ruby/1.8/bin
 
 export EDITOR=/usr/bin/vi
 
