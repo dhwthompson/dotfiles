@@ -22,6 +22,10 @@ imap § #
 let mapleader = ","
 let g:CommandTMaxHeight = 10
 
+" Quicker paragraph formatting
+nnoremap Q gqap
+vnoremap Q gq
+
 map <Leader>t :CtrlP<CR>
 map <Leader>a :Ack! 
 map <Leader>aa :Ack! --all 
