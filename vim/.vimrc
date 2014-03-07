@@ -32,6 +32,8 @@ set updatetime=750
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_enabled = 0
 
+let g:vim_markdown_folding_disabled=1
+
 let NERDTreeIgnore=['\.pyc$']
 set wildignore+=*/tmp/*
 set wildignore+=*/_site/*
