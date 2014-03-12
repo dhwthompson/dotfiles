@@ -26,6 +26,15 @@ let g:CommandTMaxHeight = 10
 nnoremap Q gqap
 vnoremap Q gq
 
+" CtrlP optimisation: use Silver Searcher if available
+" From <https://github.com/nickstenning/dotvim/blob/1146bf21/_vimrc#L113-L124>
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 map <Leader>t :CtrlP<CR>
 map <Leader>a :Ack! 
 map <Leader>aa :Ack! --all 
