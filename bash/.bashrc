@@ -47,6 +47,13 @@ function se {
   fi
 }
 
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+
+if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
+  source '/usr/local/bin/virtualenvwrapper.sh'
+fi
+
 function t {
 screen -X title $(basename `pwd`) >/dev/null || printf "\033k$(basename `pwd`)\033\\"
 }
