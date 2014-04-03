@@ -59,4 +59,3 @@ autocmd BufEnter * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
 set colorcolumn=+1
-autocmd BufEnter * highlight ColorColumn guibg=#FFDDDD
