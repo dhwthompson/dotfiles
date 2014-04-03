@@ -7,6 +7,8 @@ set hidden
 
 set nohlsearch
 syntax on
+set background=dark
+colorscheme solarized
 
 set tabstop=2
 set shiftwidth=2
