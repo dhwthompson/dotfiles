@@ -12,6 +12,7 @@
     com = checkout master
     fp = fetch --prune
     ff = merge --ff-only
+    lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
     m = merge --no-ff
     pff = pull --ff-only
 
