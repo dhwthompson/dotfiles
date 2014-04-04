@@ -7,6 +7,8 @@ set hidden
 
 set nohlsearch
 syntax on
+set background=dark
+colorscheme solarized
 
 set tabstop=2
 set shiftwidth=2
@@ -57,4 +59,3 @@ autocmd BufEnter * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
 set colorcolumn=+1
-autocmd BufEnter * highlight ColorColumn guibg=#FFDDDD
