@@ -1,3 +1,4 @@
 --type-set=puppet=.pp
+--type-set=markdown=.md,.mdown,.markdown
 
 --ignore-dir=coverage
