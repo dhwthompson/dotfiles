@@ -8,11 +8,7 @@ add_path /usr/local/bin
 
 export EDITOR=/usr/bin/vi
 
-export AWS_AUTO_SCALING_HOME=/usr/local/AutoScaling
-export AWS_AUTO_SCALING_URL='https://autoscaling.eu-west-1.amazonaws.com'
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-export AWS_CREDENTIAL_FILE=~/.aws-credentials
-add_path ${AWS_AUTO_SCALING_HOME}/bin
 
 alias ls='ls -G'
 alias py=ipython
