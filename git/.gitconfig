@@ -8,6 +8,7 @@
     d = diff
     glog = log --graph --oneline
     one = log --oneline
+    ci = commit -v
     co = checkout
     com = checkout master
     fp = fetch --prune
