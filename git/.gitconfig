@@ -9,6 +9,7 @@
     glog = log --graph --oneline
     one = log --oneline
     ci = commit -v
+    amend = commit --amend -C HEAD
     co = checkout
     com = checkout master
     fp = fetch --prune
