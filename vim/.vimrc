@@ -9,6 +9,7 @@ set nohlsearch
 syntax on
 set background=dark
 colorscheme solarized
+highlight clear SignColumn   " Clear highlight for GitGutter column
 
 set incsearch
 
