@@ -23,7 +23,7 @@ alias gt='cd "$(git rev-parse --show-toplevel)"'
 alias gx='gitx'
 
 alias upin='vagrant up && vagrant ssh'
-alias v='mvim .'
+alias v='mvim'
 alias st='git st'
 alias json='python -m json.tool'
 alias tm='tmux attach 2>/dev/null || tmux'
