@@ -2,3 +2,4 @@
 --type-set=markdown=.md,.mdown,.markdown
 
 --ignore-dir=coverage
+--ignore-dir=node_modules
