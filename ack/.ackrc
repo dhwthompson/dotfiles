@@ -3,4 +3,5 @@
 --type-set=scss=.scss
 
 --ignore-dir=coverage
+--ignore-dir=htmlcov
 --ignore-dir=node_modules
