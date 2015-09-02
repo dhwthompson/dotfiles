@@ -47,6 +47,8 @@ map <Leader>aa :Ack! --all
 map <Leader>n :set number!<CR>
 map <Leader>g :GitGutterToggle<CR>
 
+au FileType go nmap <leader>r <Plug>(go-run)
+
 set updatetime=750
 let g:gitgutter_sign_column_always = 1
 let g:gitgutter_enabled = 0
