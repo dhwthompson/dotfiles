@@ -65,3 +65,9 @@ if command -v brew >/dev/null 2>&1; then
     . `brew --prefix`/etc/bash_completion
   fi
 fi
+
+if [[ -d ~/.bash ]]; then
+  for script in $(ls ~/.bash); do
+    . ~/.bash/$script
+  done
+fi
