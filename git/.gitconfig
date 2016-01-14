@@ -34,3 +34,6 @@
 
 [rebase]
     autosquash = true
+
+[include]
+  path = .gitpair
