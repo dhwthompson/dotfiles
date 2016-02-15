@@ -39,6 +39,8 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+
+  let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
 map <Leader>t :CtrlP<CR>
