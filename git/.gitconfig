@@ -3,6 +3,7 @@
     email = mail@fatbusinessman.com
 
 [alias]
+    added = diff --diff-filter=A --name-only
     amend = commit --amend --no-edit
     b = branch
     ci = commit -v
