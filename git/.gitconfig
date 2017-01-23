@@ -3,21 +3,21 @@
     email = mail@fatbusinessman.com
 
 [alias]
-    st = status -sb
-    b = branch
-    d = diff
-    glog = log --graph --oneline
-    one = log --oneline
-    ci = commit -v
     amend = commit --amend --no-edit
+    b = branch
+    ci = commit -v
     co = checkout
     com = checkout master
-    fp = fetch --prune
+    d = diff
     ff = merge --ff-only
+    fp = fetch --prune
+    glog = log --graph --oneline
     lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
     m = merge --no-ff
+    one = log --oneline
     pf = pull --ff-only
     pff = pull --ff-only
+    st = status -sb
 
 [core]
     excludesfile = ~/.gitignore
