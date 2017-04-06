@@ -6,7 +6,7 @@
     added = diff --diff-filter=A --name-only
     amend = commit --amend --no-edit
     b = branch
-    ci = commit -v
+    ci = commit
     co = checkout
     com = checkout master
     d = diff
@@ -41,3 +41,5 @@
 
 [include]
   path = .gitpair
+[commit]
+	verbose = true
