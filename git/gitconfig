@@ -43,3 +43,6 @@
   path = .gitpair
 [commit]
 	verbose = true
+
+[includeIf "gitdir:~/Projects/hypothesis/"]
+  path = .gitconfig-hypothesis
