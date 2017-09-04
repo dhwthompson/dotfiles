@@ -49,6 +49,10 @@ map <Leader>aa :Ack! --all
 map <Leader>n :set number!<CR>
 map <Leader>r :set relativenumber!<CR>
 map <Leader>g :GitGutterToggle<CR>
+map <Leader>l :ALEToggle<CR>
+
+nmap ]l :ALENext<CR>
+nmap [l :ALEPrevious<CR>
 
 set updatetime=750
 let g:gitgutter_sign_column_always = 1
