@@ -60,7 +60,7 @@ let g:gitgutter_enabled = 0
 
 let g:vim_markdown_folding_disabled=1
 
-let NERDTreeIgnore=['\.pyc$']
+let NERDTreeIgnore=['\.pyc$', '^__pycache__$']
 set wildignore+=*/tmp/*
 set wildignore+=*/_site/*
 
