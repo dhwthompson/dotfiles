@@ -4,3 +4,4 @@
 .*.swo
 .ackrc
 .agignore
+.envrc
