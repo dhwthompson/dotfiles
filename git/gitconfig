@@ -46,3 +46,5 @@
 
 [includeIf "gitdir:~/Projects/hypothesis/"]
   path = .gitconfig-hypothesis
+[interactive]
+	singlekey = true
