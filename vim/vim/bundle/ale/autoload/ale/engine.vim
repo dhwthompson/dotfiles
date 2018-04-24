@@ -27,16 +27,25 @@ endfunction
 " Check if files are executable, and if they are, remember that they are
 " for subsequent calls. We'll keep checking until programs can be executed.
 function! ale#engine#IsExecutable(buffer, executable) abort
-    if has_key(s:executable_cache_map, a:executable)
-        return 1
+    if empty(a:executable)
+        " Don't log the executable check if the executable string is empty.
+        return 0
     endif
 
-    let l:result = 0
+    " Check for a cached executable() check.
+    let l:result = get(s:executable_cache_map, a:executable, v:null)
 
-    if executable(a:executable)
-        let s:executable_cache_map[a:executable] = 1
+    if l:result isnot v:null
+        return l:result
+    endif
 
-        let l:result = 1
+    " Check if the file is executable, and convert -1 to 1.
+    let l:result = executable(a:executable) isnot 0
+
+    " Cache the executable check if we found it, or if the option to cache
+    " failing checks is on.
+    if l:result || g:ale_cache_executable_check_failures
+        let s:executable_cache_map[a:executable] = l:result
     endif
 
     if g:ale_history_enabled
@@ -67,6 +76,13 @@ function! ale#engine#InitBufferInfo(buffer) abort
     return 0
 endfunction
 
+" Clear LSP linter data for the linting engine.
+function! ale#engine#ClearLSPData() abort
+    let s:lsp_linter_map = {}
+endfunction
+
+" This function is documented and part of the public API.
+"
 " Return 1 if ALE is busy checking a given buffer
 function! ale#engine#IsCheckingBuffer(buffer) abort
     let l:info = get(g:ale_buffer_info, a:buffer, {})
@@ -133,36 +149,40 @@ function! s:GatherOutput(job_id, line) abort
     endif
 endfunction
 
-function! s:HandleLoclist(linter_name, buffer, loclist) abort
-    let l:buffer_info = get(g:ale_buffer_info, a:buffer, {})
+function! ale#engine#HandleLoclist(linter_name, buffer, loclist) abort
+    let l:info = get(g:ale_buffer_info, a:buffer, {})
 
-    if empty(l:buffer_info)
+    if empty(l:info)
         return
     endif
 
     " Remove this linter from the list of active linters.
     " This may have already been done when the job exits.
-    call filter(l:buffer_info.active_linter_list, 'v:val isnot# a:linter_name')
+    call filter(l:info.active_linter_list, 'v:val isnot# a:linter_name')
 
     " Make some adjustments to the loclists to fix common problems, and also
     " to set default values for loclist items.
     let l:linter_loclist = ale#engine#FixLocList(a:buffer, a:linter_name, a:loclist)
 
     " Remove previous items for this linter.
-    call filter(g:ale_buffer_info[a:buffer].loclist, 'v:val.linter_name isnot# a:linter_name')
-    " Add the new items.
-    call extend(g:ale_buffer_info[a:buffer].loclist, l:linter_loclist)
+    call filter(l:info.loclist, 'v:val.linter_name isnot# a:linter_name')
 
-    " Sort the loclist again.
-    " We need a sorted list so we can run a binary search against it
-    " for efficient lookup of the messages in the cursor handler.
-    call sort(g:ale_buffer_info[a:buffer].loclist, 'ale#util#LocItemCompare')
+    " We don't need to add items or sort the list when this list is empty.
+    if !empty(l:linter_loclist)
+        " Add the new items.
+        call extend(l:info.loclist, l:linter_loclist)
+
+        " Sort the loclist again.
+        " We need a sorted list so we can run a binary search against it
+        " for efficient lookup of the messages in the cursor handler.
+        call sort(l:info.loclist, 'ale#util#LocItemCompare')
+    endif
 
     if ale#ShouldDoNothing(a:buffer)
         return
     endif
 
-    call ale#engine#SetResults(a:buffer, g:ale_buffer_info[a:buffer].loclist)
+    call ale#engine#SetResults(a:buffer, l:info.loclist)
 endfunction
 
 function! s:HandleExit(job_id, exit_code) abort
@@ -208,7 +228,7 @@ function! s:HandleExit(job_id, exit_code) abort
 
     let l:loclist = ale#util#GetFunction(l:linter.callback)(l:buffer, l:output)
 
-    call s:HandleLoclist(l:linter.name, l:buffer, l:loclist)
+    call ale#engine#HandleLoclist(l:linter.name, l:buffer, l:loclist)
 endfunction
 
 function! s:HandleLSPDiagnostics(conn_id, response) abort
@@ -222,7 +242,7 @@ function! s:HandleLSPDiagnostics(conn_id, response) abort
 
     let l:loclist = ale#lsp#response#ReadDiagnostics(a:response)
 
-    call s:HandleLoclist(l:linter_name, l:buffer, l:loclist)
+    call ale#engine#HandleLoclist(l:linter_name, l:buffer, l:loclist)
 endfunction
 
 function! s:HandleTSServerDiagnostics(response, error_type) abort
@@ -247,14 +267,14 @@ function! s:HandleTSServerDiagnostics(response, error_type) abort
     let l:loclist = get(l:info, 'semantic_loclist', [])
     \   + get(l:info, 'syntax_loclist', [])
 
-    call s:HandleLoclist('tsserver', l:buffer, l:loclist)
+    call ale#engine#HandleLoclist('tsserver', l:buffer, l:loclist)
 endfunction
 
 function! s:HandleLSPErrorMessage(error_message) abort
-    echoerr 'Error from LSP:'
+    execute 'echoerr ''Error from LSP:'''
 
     for l:line in split(a:error_message, "\n")
-        echoerr l:line
+        execute 'echoerr l:line'
     endfor
 endfunction
 
@@ -286,10 +306,6 @@ function! ale#engine#SetResults(buffer, loclist) abort
 
     if g:ale_set_quickfix || g:ale_set_loclist
         call ale#list#SetLists(a:buffer, a:loclist)
-
-        if l:linting_is_done
-            call ale#list#CloseWindowIfNeeded(a:buffer)
-        endif
     endif
 
     if exists('*ale#statusline#Update')
@@ -301,22 +317,30 @@ function! ale#engine#SetResults(buffer, loclist) abort
         call ale#highlight#SetHighlights(a:buffer, a:loclist)
     endif
 
-    if g:ale_echo_cursor
-        " Try and echo the warning now.
-        " This will only do something meaningful if we're in normal mode.
-        call ale#cursor#EchoCursorWarning()
-    endif
-
     if l:linting_is_done
+        if g:ale_echo_cursor
+            " Try and echo the warning now.
+            " This will only do something meaningful if we're in normal mode.
+            call ale#cursor#EchoCursorWarning()
+        endif
+
         " Reset the save event marker, used for opening windows, etc.
         call setbufvar(a:buffer, 'ale_save_event_fired', 0)
+        " Set a marker showing how many times a buffer has been checked.
+        call setbufvar(
+        \   a:buffer,
+        \   'ale_linted',
+        \   getbufvar(a:buffer, 'ale_linted', 0) + 1
+        \)
 
         " Automatically remove all managed temporary files and directories
         " now that all jobs have completed.
         call ale#engine#RemoveManagedFiles(a:buffer)
 
         " Call user autocommands. This allows users to hook into ALE's lint cycle.
-        silent doautocmd User ALELint
+        silent doautocmd <nomodeline> User ALELintPost
+        " Old DEPRECATED name; call it for backwards compatibility.
+        silent doautocmd <nomodeline> User ALELint
     endif
 endfunction
 
@@ -341,9 +365,6 @@ function! s:RemapItemTypes(type_map, loclist) abort
         endif
     endfor
 endfunction
-
-" Save the temporary directory so we can figure out if files are in it.
-let s:temp_dir = fnamemodify(tempname(), ':h')
 
 function! ale#engine#FixLocList(buffer, linter_name, loclist) abort
     let l:bufnr_map = {}
@@ -378,8 +399,12 @@ function! ale#engine#FixLocList(buffer, linter_name, loclist) abort
         \   'linter_name': a:linter_name,
         \}
 
+        if has_key(l:old_item, 'code')
+            let l:item.code = l:old_item.code
+        endif
+
         if has_key(l:old_item, 'filename')
-        \&& l:old_item.filename[:len(s:temp_dir) - 1] isnot# s:temp_dir
+        \&& !ale#path#IsTempName(l:old_item.filename)
             " Use the filename given.
             " Temporary files are assumed to be for this buffer,
             " and the filename is not included then, because it looks bad
@@ -501,7 +526,7 @@ function! s:RunJob(options) abort
         endif
     endif
 
-    let l:command = ale#job#PrepareCommand(l:command)
+    let l:command = ale#job#PrepareCommand(l:buffer, l:command)
     let l:job_options = {
     \   'mode': 'nl',
     \   'exit_cb': function('s:HandleExit'),
@@ -577,7 +602,7 @@ function! ale#engine#ProcessChain(buffer, linter, chain_index, input) abort
 
     if has_key(a:linter, 'command_chain')
         while l:chain_index < len(a:linter.command_chain)
-            " Run a chain of commands, one asychronous command after the other,
+            " Run a chain of commands, one asynchronous command after the other,
             " so that many programs can be run in a sequence.
             let l:chain_item = a:linter.command_chain[l:chain_index]
 
@@ -692,6 +717,13 @@ function! s:CheckWithLSP(buffer, linter) abort
     \   : ale#lsp#message#DidChange(a:buffer)
     let l:request_id = ale#lsp#Send(l:id, l:change_message, l:root)
 
+    " If this was a file save event, also notify the server of that.
+    if a:linter.lsp isnot# 'tsserver'
+    \&& getbufvar(a:buffer, 'ale_save_event_fired', 0)
+      let l:save_message = ale#lsp#message#DidSave(a:buffer)
+      let l:request_id = ale#lsp#Send(l:id, l:save_message, l:root)
+    endif
+
     if l:request_id != 0
         if index(l:info.active_linter_list, a:linter.name) < 0
             call add(l:info.active_linter_list, a:linter.name)
@@ -776,6 +808,8 @@ function! ale#engine#RunLinters(buffer, linters, should_lint_file) abort
     " We can only clear the results if we aren't checking the buffer.
     let l:can_clear_results = !ale#engine#IsCheckingBuffer(a:buffer)
 
+    silent doautocmd <nomodeline> User ALELintPre
+
     for l:linter in a:linters
         " Only run lint_file linters if we should.
         if !l:linter.lint_file || a:should_lint_file
@@ -805,6 +839,11 @@ endfunction
 " clear the state of everything, and remove the Dictionary for managing
 " the buffer.
 function! ale#engine#Cleanup(buffer) abort
+    " Don't bother with cleanup code when newer NeoVim versions are exiting.
+    if get(v:, 'exiting', v:null) isnot v:null
+        return
+    endif
+
     if !has_key(g:ale_buffer_info, a:buffer)
         return
     endif
@@ -840,7 +879,7 @@ function! ale#engine#WaitForJobs(deadline) abort
 
     " Gather all of the jobs from every buffer.
     for l:info in values(g:ale_buffer_info)
-        call extend(l:job_list, l:info.job_list)
+        call extend(l:job_list, get(l:info, 'job_list', []))
     endfor
 
     " NeoVim has a built-in API for this, so use that.
@@ -888,7 +927,7 @@ function! ale#engine#WaitForJobs(deadline) abort
 
     " Check again to see if any jobs are running.
     for l:info in values(g:ale_buffer_info)
-        for l:job_id in l:info.job_list
+        for l:job_id in get(l:info, 'job_list', [])
             if ale#job#IsRunning(l:job_id)
                 let l:has_new_jobs = 1
                 break

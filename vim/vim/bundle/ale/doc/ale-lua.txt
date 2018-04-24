@@ -1,9 +1,18 @@
 ===============================================================================
 ALE Lua Integration                                           *ale-lua-options*
 
+===============================================================================
+luac                                                             *ale-lua-luac*
+
+g:ale_lua_luac_executable                           *g:ale_lua_luac_executable*
+                                                    *b:ale_lua_luac_executable*
+  Type: |String|
+  Default: `'luac'`
+
+  This variable can be changed to change the path to luac.
 
 ===============================================================================
-4.12. luacheck                                               *ale-lua-luacheck*
+luacheck                                                     *ale-lua-luacheck*
 
 g:ale_lua_luacheck_executable                   *g:ale_lua_luacheck_executable*
                                                 *b:ale_lua_luacheck_executable*

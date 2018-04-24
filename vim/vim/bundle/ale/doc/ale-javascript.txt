@@ -56,8 +56,98 @@ g:ale_javascript_eslint_suppress_eslintignore
   Type: |Number|
   Default: `0`
 
-  This variable can be set to disable the warning that linting is disabled on
-  the current file due to being covered by `.eslintignore`.
+  This variable can be set to `1` to disable warnings for files being ignored
+  by eslint.
+
+
+g:ale_javascript_eslint_suppress_missing_config
+                              *g:ale_javascript_eslint_suppress_missing_config*
+                              *b:ale_javascript_eslint_suppress_missing_config*
+  Type: |Number|
+  Default: `0`
+
+  This variable can be set to `1` to disable errors for missing eslint
+  configuration files.
+
+  When turning this option on, eslint will not report any problems when no
+  configuration files are found.
+
+
+===============================================================================
+flow                                                      *ale-javascript-flow*
+
+g:ale_javascript_flow_executable             *g:ale_javascript_flow_executable*
+                                             *b:ale_javascript_flow_executable*
+  Type: |String|
+  Default: `'flow'`
+
+  See |ale-integrations-local-executables|
+
+
+g:ale_javascript_flow_use_home_config   *g:ale_javascript_flow_use_home_config*
+                                        *b:ale_javascript_flow_use_home_config*
+  Type: |Number|
+  Default: `0`
+
+  When set to `1`, ALE will allow Flow to be executed with configuration files
+  from your home directory. ALE will not run Flow with home directory
+  configuration files by default, as doing so can lead to Vim consuming all of
+  your RAM and CPU power.
+
+
+g:ale_javascript_flow_use_global             *g:ale_javascript_flow_use_global*
+                                             *b:ale_javascript_flow_use_global*
+  Type: |Number|
+  Default: `0`
+
+  See |ale-integrations-local-executables|
+
+
+===============================================================================
+importjs                                              *ale-javascript-importjs*
+
+g:ale_javascript_importjs_executable     *g:ale_javascript_importjs_executable*
+                                         *b:ale_javascript_importjs_executable*
+  Type: |String|
+  Default: `'importjs'`
+
+
+===============================================================================
+jscs                                                      *ale-javascript-jscs*
+
+g:ale_javascript_jscs_executable             *g:ale_javascript_jscs_executable*
+                                             *b:ale_javascript_jscs_executable*
+  Type: |String|
+  Default: `'jscs'`
+
+  See |ale-integrations-local-executables|
+
+
+g:ale_javascript_jscs_use_global             *g:ale_javascript_jscs_use_global*
+                                             *b:ale_javascript_jscs_use_global*
+  Type: |Number|
+  Default: `0`
+
+  See |ale-integrations-local-executables|
+
+
+===============================================================================
+jshint                                                  *ale-javascript-jshint*
+
+g:ale_javascript_jshint_executable         *g:ale_javascript_jshint_executable*
+                                           *b:ale_javascript_jshint_executable*
+  Type: |String|
+  Default: `'jshint'`
+
+  See |ale-integrations-local-executables|
+
+
+g:ale_javascript_jshint_use_global         *g:ale_javascript_jshint_use_global*
+                                           *b:ale_javascript_jshint_use_global*
+  Type: |Number|
+  Default: `0`
+
+  See |ale-integrations-local-executables|
 
 
 ===============================================================================
@@ -89,17 +179,6 @@ g:ale_javascript_prettier_use_global     *g:ale_javascript_prettier_use_global*
 
 ===============================================================================
 prettier-eslint                                *ale-javascript-prettier-eslint*
-
-ALE supports `prettier-eslint` for easy integration with projects, but it is
-not recommended for new projects. ALE instead recommends configuring
-|g:ale_fixers| to run `'prettier'` and `'eslint'` in a sequence like so: >
-
-  let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
-<
-
-This is because `prettier-eslint` cannot be configured to use the ESLint
-configuration file for input given via stdin, which is how ALE integrates with
-the tool.
 
 g:ale_javascript_prettier_eslint_executable
                                   *g:ale_javascript_prettier_eslint_executable*
@@ -142,8 +221,8 @@ g:ale_javascript_prettier_standard_executable
 
 
 g:ale_javascript_prettier_standard_options
-                                     *g:ale_javascript_prettier_standard_options*
-                                     *b:ale_javascript_prettier_standard_options*
+                                   *g:ale_javascript_prettier_standard_options*
+                                   *b:ale_javascript_prettier_standard_options*
   Type: |String|
   Default: `''`
 
@@ -151,69 +230,14 @@ g:ale_javascript_prettier_standard_options
 
 
 g:ale_javascript_prettier_standard_use_global
-                                  *g:ale_javascript_prettier_standard_use_global*
-                                  *b:ale_javascript_prettier_standard_use_global*
+                                *g:ale_javascript_prettier_standard_use_global*
+                                *b:ale_javascript_prettier_standard_use_global*
   Type: |Number|
   Default: `0`
 
   See |ale-integrations-local-executables|
 
 
-===============================================================================
-flow                                                      *ale-javascript-flow*
-
-g:ale_javascript_flow_executable             *g:ale_javascript_flow_executable*
-                                             *b:ale_javascript_flow_executable*
-  Type: |String|
-  Default: `'flow'`
-
-  See |ale-integrations-local-executables|
-
-
-g:ale_javascript_flow_use_global             *g:ale_javascript_flow_use_global*
-                                             *b:ale_javascript_flow_use_global*
-  Type: |Number|
-  Default: `0`
-
-  See |ale-integrations-local-executables|
-
-
-===============================================================================
-jscs                                                      *ale-javascript-jscs*
-
-g:ale_javascript_jscs_executable             *g:ale_javascript_jscs_executable*
-                                             *b:ale_javascript_jscs_executable*
-  Type: |String|
-  Default: `'jscs'`
-
-  See |ale-integrations-local-executables|
-
-
-g:ale_javascript_jscs_use_global             *g:ale_javascript_jscs_use_global*
-                                             *b:ale_javascript_jscs_use_global*
-  Type: |Number|
-  Default: `0`
-
-  See |ale-integrations-local-executables|
-
-
-===============================================================================
-jshint                                                  *ale-javascript-jshint*
-
-g:ale_javascript_jshint_executable         *g:ale_javascript_jshint_executable*
-                                           *b:ale_javascript_jshint_executable*
-  Type: |String|
-  Default: `'jshint'`
-
-  See |ale-integrations-local-executables|
-
-
-g:ale_javascript_jshint_use_global         *g:ale_javascript_jshint_use_global*
-                                           *b:ale_javascript_jshint_use_global*
-  Type: |Number|
-  Default: `0`
-
-  See |ale-integrations-local-executables|
 
 
 ===============================================================================
