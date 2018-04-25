@@ -9,6 +9,9 @@ set nohlsearch
 syntax on
 set background=dark
 colorscheme solarized
+
+call togglebg#map("<F5>")
+
 highlight clear SignColumn   " Clear highlight for GitGutter column
 nnoremap <D-0> :set guifont=<CR>
 
