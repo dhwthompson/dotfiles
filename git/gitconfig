@@ -40,7 +40,9 @@
     showPatch = true
 
 [include]
+  path = .gitconfig-local
   path = .gitpair
+
 [commit]
 	verbose = true
 
