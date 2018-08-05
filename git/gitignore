@@ -6,3 +6,4 @@
 .agignore
 .envrc
 .direnv/
+.idea/
