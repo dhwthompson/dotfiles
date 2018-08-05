@@ -32,10 +32,6 @@ alias be='bundle exec'
 alias ber='bundle exec rake'
 alias bet='bundle exec ruby -Itest'
 
-if [[ -z $(command -v ack) && -s $(command -v ack-grep) ]]; then
-  alias ack=ack-grep
-fi
-
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 
