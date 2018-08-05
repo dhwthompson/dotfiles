@@ -1,1 +1,0 @@
-[ -f /Users/david/.travis/travis.sh ] && source /Users/david/.travis/travis.sh
