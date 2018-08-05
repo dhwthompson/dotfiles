@@ -1,6 +1,0 @@
-function pairing_prompt {
-  if [[ $(git config user.email) == pairing* ]]; then
-    echo -n "🍐  "
-  fi
-}
-export PS1="\$(pairing_prompt)$PS1"
