@@ -47,11 +47,6 @@ function t {
 screen -X title $(basename `pwd`) >/dev/null || printf "\033k$(basename `pwd`)\033\\"
 }
 
-function gpop {
-  local oldbranch=$(git rev-parse --abbrev-ref HEAD)
-  git checkout master && git branch -d $oldbranch
-}
-
 if command -v brew >/dev/null 2>&1; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
