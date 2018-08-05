@@ -36,13 +36,6 @@ if [[ -z $(command -v ack) && -s $(command -v ack-grep) ]]; then
   alias ack=ack-grep
 fi
 
-function se {
-  if [[ -e 'bin/activate' ]]; then source bin/activate;
-  else
-    ls -d *_ve >/dev/null 2>&1 && source *_ve/bin/activate || echo 'Not found';
-  fi
-}
-
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
 
