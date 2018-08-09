@@ -1,0 +1,4 @@
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+
+setopt PROMPT_SUBST
+export PS1='%F{cyan}$(__git_ps1 "(%s) ")%F{blue}%1~%f$ '
