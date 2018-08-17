@@ -46,6 +46,8 @@ if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
+let g:ctrlp_working_path_mode = ''
+
 map <Leader>t :CtrlP<CR>
 map <Leader>a :Ack! 
 map <Leader>aa :Ack! --all 
