@@ -14,3 +14,7 @@ alias st='git st'
 # Git aliases -- external apps
 alias gdm='git diff | mate'
 alias gx='gitx'
+
+
+# Go aliases
+alias gt.='go test ./...'
