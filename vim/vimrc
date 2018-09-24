@@ -69,6 +69,9 @@ let NERDTreeIgnore=['\.pyc$', '^__pycache__$']
 set wildignore+=*/tmp/*
 set wildignore+=*/_site/*
 
+set wildmode=longest,list,full
+set wildmenu
+
 let g:ale_linters = {'python': ['flake8']}
 
 " Open NERDTree automatically if no files are specified
