@@ -84,3 +84,5 @@ autocmd BufEnter * highlight ExtraWhitespace ctermbg=red guibg=DarkRed
 autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 
 set colorcolumn=+1
+
+let g:go_auto_type_info = 1
