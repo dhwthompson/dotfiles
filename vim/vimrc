@@ -28,6 +28,8 @@ map <F2> :NERDTreeToggle<CR>
 imap <F3> #
 imap § #
 
+set backspace=indent,eol,start
+
 let mapleader = ","
 let g:CommandTMaxHeight = 10
 
