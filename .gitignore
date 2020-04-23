@@ -1,1 +1,4 @@
 /iterm/.iterm.*.plist
+
+# Black-specific virtualenv
+/vim/vim/black

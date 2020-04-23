@@ -57,6 +57,7 @@ map <Leader>n :set number!<CR>
 map <Leader>r :set relativenumber!<CR>
 map <Leader>g :GitGutterToggle<CR>
 map <Leader>l :ALEToggle<CR>
+map <Leader>b :Black<CR>
 
 nmap ]l :ALENext<CR>
 nmap [l :ALEPrevious<CR>
