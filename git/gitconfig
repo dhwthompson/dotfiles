@@ -8,7 +8,7 @@
     b = branch
     ci = commit
     co = checkout
-    com = checkout master
+    com = checkout main
     d = diff
     ff = merge --ff-only
     fp = fetch --prune
