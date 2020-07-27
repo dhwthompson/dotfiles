@@ -47,3 +47,5 @@
 
 [interactive]
 	singlekey = true
+[init]
+	defaultBranch = main
