@@ -48,6 +48,8 @@ if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
+let g:black_virtualenv = '~/.local/pipx/venvs/black'
+
 let g:ctrlp_working_path_mode = ''
 
 map <Leader>t :CtrlP<CR>
