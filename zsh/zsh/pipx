@@ -1,0 +1,2 @@
+# Add the path for pipx binaries
+export PATH="$PATH:/Users/david/.local/bin"
