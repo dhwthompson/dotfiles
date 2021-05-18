@@ -57,11 +57,7 @@ map <Leader>aa :Ack! --all
 map <Leader>n :set number!<CR>
 map <Leader>r :set relativenumber!<CR>
 map <Leader>g :GitGutterToggle<CR>
-map <Leader>l :ALEToggle<CR>
 map <Leader>b :Black<CR>
-
-nmap ]l :ALENext<CR>
-nmap [l :ALEPrevious<CR>
 
 set updatetime=750
 let g:gitgutter_sign_column_always = 1
@@ -76,7 +72,6 @@ set wildignore+=*/_site/*
 set wildmode=longest,list,full
 set wildmenu
 
-let g:ale_linters = {'python': ['flake8']}
 
 " Open NERDTree automatically if no files are specified
 autocmd StdinReadPre * let s:std_in=1
