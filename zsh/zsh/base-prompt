@@ -1,4 +1,10 @@
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+GIT_PROMPT_PATH="etc/bash_completion.d/git-prompt.sh"
+
+if [[ -f /opt/homebrew/$GIT_PROMPT_PATH ]]; then
+    source /opt/homebrew/$GIT_PROMPT_PATH
+elif [[ -f /usr/local/$GIT_PROMPT_PATH ]]; then
+    source /usr/local/$GIT_PROMPT_PATH
+fi
 
 setopt PROMPT_SUBST
 export PS1='%F{cyan}$(__git_ps1 "(%s) ")%F{blue}%1~%f$ '
