@@ -1,0 +1,7 @@
+if (command -v go >/dev/null); then
+    if [[ -n $(go env GOBIN) ]]; then
+        export PATH=$(go env GOBIN):$PATH
+    else
+        export PATH=$(go env GOPATH)/bin:$PATH
+    fi
+fi
