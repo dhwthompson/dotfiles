@@ -1,4 +1,4 @@
 function gpop {
   local oldbranch=$(git rev-parse --abbrev-ref HEAD)
-  git checkout master && git branch -d $oldbranch
+  git checkout main && git branch -d $oldbranch
 }
