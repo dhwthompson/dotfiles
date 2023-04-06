@@ -1,6 +1,6 @@
 [user]
     name = David Thompson
-    email = mail@fatbusinessman.com
+    email = dhwthompson@gmail.com
 
 [alias]
     added = diff --diff-filter=A --name-only
