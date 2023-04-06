@@ -6,7 +6,13 @@ elif [[ -f /usr/local/$GIT_PROMPT_PATH ]]; then
     source /usr/local/$GIT_PROMPT_PATH
 elif [[ -f /etc/bash_completion.d/git-prompt ]]; then
     source /etc/bash_completion.d/git-prompt
+else
+    echo "No Git prompt function found"
 fi
 
 setopt PROMPT_SUBST
-export PS1='%F{cyan}$(__git_ps1 "(%s) ")%F{blue}%1~%f$ '
+if $(command -v __git_ps1 >/dev/null); then
+    export PS1='%F{cyan}$(__git_ps1 "(%s) ")%F{blue}%1~%f$ '
+else
+    export PS1='%F{blue}%1~%f$ '
+fi
