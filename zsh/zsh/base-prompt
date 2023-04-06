@@ -4,6 +4,8 @@ if [[ -f /opt/homebrew/$GIT_PROMPT_PATH ]]; then
     source /opt/homebrew/$GIT_PROMPT_PATH
 elif [[ -f /usr/local/$GIT_PROMPT_PATH ]]; then
     source /usr/local/$GIT_PROMPT_PATH
+elif [[ -f /etc/bash_completion.d/git-prompt ]]; then
+    source /etc/bash_completion.d/git-prompt
 fi
 
 setopt PROMPT_SUBST
