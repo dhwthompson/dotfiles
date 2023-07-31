@@ -49,3 +49,5 @@
 	singlekey = true
 [init]
 	defaultBranch = main
+[tig]
+	vertical-split = false
