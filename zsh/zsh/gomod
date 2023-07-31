@@ -1,0 +1,10 @@
+function gm {
+  local modpath=$(go env GOMOD)
+  if [[ $modpath == "/dev/null" ]]; then
+    >&2 echo "No go.mod path found"
+    return 1
+  fi
+  local modroot=${modpath%/*}
+  cd $modroot
+  >&2 echo $modroot
+}
