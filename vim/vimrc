@@ -85,3 +85,7 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$/ containedin=ALL
 set colorcolumn=+1
 
 let g:go_auto_type_info = 1
+
+if filereadable($HOME . "/.vimrc-local")
+  source $HOME/.vimrc-local
+endif
