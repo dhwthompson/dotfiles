@@ -1,3 +1,7 @@
 theme = light:Monokai Pro Light Sun,dark:Monokai Pro Octagon
+
 macos-option-as-alt = true
 keybind = alt+3=text:#
+
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
