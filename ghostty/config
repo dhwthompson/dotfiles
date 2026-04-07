@@ -5,3 +5,5 @@ keybind = alt+3=text:#
 
 window-inherit-working-directory = false
 tab-inherit-working-directory = false
+
+macos-icon = retro
