@@ -7,3 +7,5 @@ window-inherit-working-directory = false
 tab-inherit-working-directory = false
 
 macos-icon = retro
+
+keybind = global:cmd+backquote=toggle_quick_terminal
